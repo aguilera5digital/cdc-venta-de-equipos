@@ -8,7 +8,7 @@ import { getImage } from "@/lib/getImage";
 export async function getStaticPaths() {
   const servicios = await getCollection("servicios");
   return servicios.map((servicio: CollectionEntry<"servicios">) => ({
-    params: { slug: servicio.id },
+    params: { slug: servicio.id.split("/").filter(Boolean).pop() ?? servicio.id },
     props: { servicio },
   }));
 }
@@ -116,7 +116,7 @@ const serviciosRelacionadosConImagenes = await Promise.all(
           {
             serviciosRelacionadosConImagenes.map((servicioRelacionado) => (
               <a
-                href={`/servicios/${servicioRelacionado.id}`}
+                href={`/servicios/${servicioRelacionado.id.split("/").filter(Boolean).pop() ?? servicioRelacionado.id}`}
                 class="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col"
               >
                 {servicioRelacionado.image && (
