@@ -2,60 +2,207 @@
 import Layout from "../layouts/Layout.astro";
 // import { Image } from "astro:assets";
 // import collage from "../assets/images/COLLAGE-600x579.png";
+import iconoCheck from "@/assets/svg/icono-check-circle.svg";
 ---
 
 <Layout
-title="Empresa - Medical Más Salud"
+title="CDC Rent"
 description="Líderes en arriendo, venta y reparación de equipos médicos. Especialistas en concentradores de oxígeno Airsep y Nidek. Atención personalizada a domicilio."
 >
-    <div class="min-h-screen py-8">
+  <section class="empresa-banner bg-[#012b49] pt-16 pb-16">
+  <div class="max-w-[1350px] mx-auto px-4">
+
+
+    <div class="flex flex-col lg:flex-row gap-10 items-center">
+
+     
+      <div class="text-white w-full lg:w-1/2">
+        <span class="inline-flex items-center bg-white/20 text-white text-xs font-medium px-4 py-1 rounded-full mb-4">
+          CDC RENT
+        </span>
+
+        <h2 class="text-3xl md:text-4xl font-bold leading-tight mb-4 max-w-xl">
+          Arriende equipos de lavanderia industrial
+        </h2>
+
+        <p class="text-white/85 text-base md:text-lg leading-relaxed max-w-xl mb-8">
+          Con CDC Rent accede a equipos de alta eficiencia con cuotas mensuales fijas.
+          Ideal para hoteles, industria, restaurantes y lavanderias comerciales.
+        </p>
+
+        <a
+          href="#"
+          class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 transition-all duration-300 rounded-[10px]"
+        >
+          Cotizar ahora
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+     
+      <div class="bg-[#fff] rounded-[15px_15px_15px_15px] md:rounded-[15px_15px_30%_15px] p-6 md:p-10 w-full lg:w-1/2">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] font-semibold px-4 py-2 rounded-full">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            <span class="font-bold">Sin inversion inicial</span>
+          </div>
+
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] font-semibold px-4 py-2 rounded-full">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            <p>Contratos flexibles de 12 a 60 meses</p>
+          </div>
+
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] px-4 py-2 rounded-full">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            Equipos de primera calidad
+          </div>
+
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] px-4 py-2 rounded-full">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            Renovacion tecnologica continua
+          </div>
+
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] px-4 py-2 rounded-full">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            <span><b>Mantención incluida</b> en el plan</span>
+          </div>
+
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] px-4 py-2 rounded-full">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            Soporte tecnico garantizado
+          </div>
+
+        </div>
+
+        <div class="mt-4 flex justify-start md:justify-center">
+          <div class="inline-flex items-center gap-2 bg-[#dceeff] text-[#1e293b] font-bold px-4 py-4 rounded-full text-sm">
+            <img src={iconoCheck.src} class="w-5 h-5" />
+            Seguros contratados
+          </div>
+        </div>
+       </div>
+      </div>
+    </div>
+  
+</section>
+
+    <section class="seccion-cotizador bg-[#f4f4f4] py-16 md:py-20">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="text-left mb-12">
-                <h1 class="text-5xl font-normal text-gray-900 mb-4 ml-12">
-                    Empresa
-                </h1>
-            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div>
+                    <h2 class="text-[#1b1e4b] text-2xl md:text-4xl font-bold leading-tight mb-3">
+                        Calcule su cuota mensual
+                    </h2>
+                    <p class="text-gray-700 max-w-xl mb-8">
+                        Ingrese el monto neto del equipo y seleccione el plazo deseado para conocer el valor
+                        aproximado de su cuota mensual.
+                    </p>
 
-            <div class="flex flex-col md:flex-row gap-8">
-                <!-- Columna Izquierda: Texto (más ancha) -->
-                <div class="flex-1 space-y-8">
-                    <div class="space-y-4">
-                        <h4 class="text-2xl text-gray-900 font-regular">
-                            ¿Quiénes somos?
-                        </h4>
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-[#dceeff] text-[#1d76d2] text-4xl font-bold flex items-center justify-center">
+                                1
+                            </div>
+                            <div>
+                                <h3 class="text-[18px] md:text-2xl font-bold text-black mb-1">Ingrese el valor del equipo</h3>
+                                <p class="text-gray-700">Monto neto sin IVA del equipo o conjunto de equipos.</p>
+                            </div>
+                        </div>
 
-                        <p class="text-gray-700 leading-relaxed prose-base">
-                            Somos una empresa que está enfocada al arriendo,
-                            mantención, reparación y venta de equipos de
-                            oxígeno. Damos soluciones a distintos equipos
-                            médicos eléctricos y electrónicos.
-                        </p>
-                    </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-[#dceeff] text-[#1d76d2] text-4xl font-bold flex items-center justify-center">
+                                2
+                            </div>
+                            <div>
+                                <h3 class="text-[18px] md:text-2xl font-bold text-black mb-1">Seleccione el plazo</h3>
+                                <p class="text-gray-700">Plazos disponibles desde 12 hasta 60 meses.</p>
+                            </div>
+                        </div>
 
-                    <div class="space-y-4">
-                        <h4 class="text-2xl text-gray-900 font-regular">
-                            Servicio Técnico:
-                        </h4>
-                        <p class="text-gray-700 leading-relaxed prose-base">
-                            Nuestro servicio técnico cuenta con 10 años de
-                            experiencia y con técnicos altamente capacitados que
-                            poseen instrumentos de laboratorio para detectar
-                            distintas fallas que presenten los equipos. Atención
-                            a empresas y particulares.
-                        </p>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-full bg-[#dceeff] text-[#1d76d2] text-4xl font-bold flex items-center justify-center">
+                                3
+                            </div>
+                            <div>
+                                <h3 class="text-[18px] md:text-2xl font-bold text-black mb-1">Obtenga su cuota estimada</h3>
+                                <p class="text-gray-700">Valor mensual + IVA, con mantencion incluida y seguros.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Imagen (367.98px × 355.38px) -->
-                <!-- TODO: Add collage image when available -->
-                <!-- <div class="flex justify-center items-center">
-                    <Image
-                        src={collage}
-                        alt="Collage de equipos de oxígeno"
-                        class="w-[367.98px] h-[355.38px] object-contain"
-                    />
-                </div> -->
+                <div class="bg-[#efefef] border border-[#d8d8d8] rounded-[15px] shadow-sm p-6 md:p-8">
+                    <h3 class="text-[#1b1e4b] text-2xl md:text-4xl font-bold text-center mb-2">
+                        Cotizador CDC Rent
+                    </h3>
+                    <p class="text-center text-gray-700 mb-6">
+                        Cotiza el valor de la cuota ingresando los siguientes datos
+                    </p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-gray-600 font-semibold mb-1" for="monto-neto">Monto neto</label>
+                            <div class="w-full bg-white border border-gray-200 h-11 px-4 flex items-center gap-2 text-gray-500">
+                                <span>$</span>
+                                <input
+                                    id="monto-neto"
+                                    name="monto-neto"
+                                    type="number"
+                                    min="0"
+                                    placeholder="0"
+                                    class="w-full bg-transparent outline-none text-gray-700 placeholder:text-gray-400"
+                                />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-600 font-semibold mb-1" for="numero-cuotas">Numero de cuotas</label>
+                            <div class="relative">
+                                <select
+                                    id="numero-cuotas"
+                                    name="numero-cuotas"
+                                    class="w-full bg-white border border-gray-200 h-11 px-4 pr-10 text-gray-700 appearance-none outline-none"
+                                >
+                                    <option value="">Selecciona</option>
+                                    <option value="12">12 meses</option>
+                                    <option value="24">24 meses</option>
+                                    <option value="36">36 meses</option>
+                                    <option value="48">48 meses</option>
+                                    <option value="60">60 meses</option>
+                                </select>
+                                <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-gray-500" aria-hidden="true">
+                                    ⌄
+                                </span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-gray-600 font-semibold mb-1">Valor de cuota Mensual</label>
+                            <div class="w-full bg-white border border-gray-200 h-20 px-4 flex items-center text-4xl font-bold text-black">
+                                $0
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex items-center justify-between gap-4">
+                        <button
+                            type="button"
+                            class="text-black text-5xl leading-none"
+                            aria-label="Reiniciar cotizador"
+                        >
+                            ↻
+                        </button>
+                        <a
+                            href="#"
+                            class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-[10px] transition-all duration-300"
+                        >
+                            Solicitar cotizacion
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 </Layout>

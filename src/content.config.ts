@@ -2,12 +2,17 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const servicios = defineCollection({
-  loader: glob({ pattern: '**/*.mdoc', base: './src/content/servicios' }),
+  loader: glob({
+    pattern: '{content/servicios,products}/**/*.mdoc',
+    base: './src',
+  }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     published: z.boolean().default(true),
     category: z.string().optional(),
+    brand: z.string().optional(),
+    year: z.string().optional(),
     tags: z.array(z.string()).optional(),
     price: z.string().optional(),
     duration: z.string().optional(),

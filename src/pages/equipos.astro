@@ -1,0 +1,337 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { getImage } from "@/lib/getImage";
+import bannerEquipos from "@/assets/images/images-equipos/banner-equipos.jpg";
+import iconoEficiencia from "@/assets/svg/icono-eficiencia.svg";
+import iconoGarantia from "@/assets/svg/icono-garantia.svg";
+import iconoLideres from "@/assets/svg/icono-lideres.svg";
+import iconoAsesoria from "@/assets/svg/icono-asesoria.svg";
+
+
+const servicios = await getCollection("servicios");
+const productos = servicios.filter(
+  (entry) =>
+    entry.data.published &&
+    (entry.data.tags?.includes("productos") ||
+      entry.filePath?.includes("/products/") ||
+      entry.filePath?.includes("\\products\\")),
+);
+
+const productosConImagen = await Promise.all(
+  productos.map(async (producto) => ({
+    ...producto,
+    image: await getImage(producto.data.image),
+  })),
+);
+
+const categorias = Array.from(
+  new Set(
+    productosConImagen
+      .map((p) => p.data.category)
+      .filter((value): value is string => Boolean(value)),
+  ),
+).sort();
+
+const marcas = Array.from(
+  new Set(
+    productosConImagen
+      .map((p) => p.data.brand)
+      .filter((value): value is string => Boolean(value)),
+  ),
+).sort();
+
+const anios = Array.from(
+  new Set(
+    productosConImagen
+      .map((p) => p.data.year)
+      .filter((value): value is string => Boolean(value)),
+  ),
+).sort((a, b) => Number(b) - Number(a));
+---
+
+<Layout
+  title="Equipos - Medical Más Salud"
+  description="Conoce nuestra sección de equipos."
+>
+  <section class="equipos-banner bg-[#ffffff] pt-16 pb-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-[#1b1e4b] text-3xl md:text-4xl font-bold leading-tight mb-6 max-w-xl">
+            Equipos de lavanderia industrial para cada necesidad
+          </h1>
+          <p class="text-gray-700 text-m leading-relaxed max-w-xl mb-10">
+            Desde lavadoras de alta capacidad hasta sistemas de planchado y plegado
+            automatico. Soluciones completas de marcas mas reconocidas del mundo.
+          </p>
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#"
+              class="inline-flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-[10px] transition-all duration-300"
+            >
+              Ver catalogo
+            </a>
+            <a
+              href="#"
+              class="inline-flex items-center justify-center bg-white border border-gray-300 hover:bg-gray-100 text-gray-700 font-medium px-6 py-3 rounded-[10px] transition-all duration-300"
+            >
+              Solicitar cotizacion
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center">
+          <Image
+            src={bannerEquipos}
+            alt="Equipos de lavanderia industrial"
+            class="w-full max-w-[620px] h-auto rounded-[10px] object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="equipos-beneficios bg-[#f4f4f4] pt-16 pb-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="bg-white rounded-[40px] px-6 py-8 md:px-10 md:py-10">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div>
+          <div class="flex justify-center mb-2">
+                 <img src={iconoEficiencia.src} alt="Ícono llave en mano" class="w-[60px] h-[60px]" loading="lazy" />
+          </div>
+            <h3 class="text-[20px] font-bold text-black mb-2">Alta eficiencia</h3>
+            <p class="text-black-700 text-[15px] leading-[1.2]">
+              Equipos con bajo consumo de agua, energia y quimicos
+            </p>
+          </div>
+
+          <div>
+          <div class="flex justify-center mb-2">
+                 <img src={iconoGarantia.src} alt="Ícono llave en mano" class="w-[60px] h-[60px]" loading="lazy" />
+          </div>
+            <h3 class="text-[20px] font-bold text-black mb-2">Garantía extendida</h3>
+            <p class="text-black-700 text-[15px] leading-[1.2]">
+              Respaldo tecnico y garantia de fabrica en todos los equipos
+            </p>
+          </div>
+
+          <div>
+            <div class="flex justify-center mb-2">
+                 <img src={iconoLideres.src} alt="Ícono llave en mano" class="w-[60px] h-[60px]" loading="lazy" />
+          </div>
+            <h3 class="text-[20px] font-bold text-black mb-2">Marcas líderes</h3>
+            <p class="text-black-700 text-[15px] leading-[1.2]">
+              Representamos las marcas mas confiables del mercado mundial
+            </p>
+          </div>
+
+          <div>
+            <div class="flex justify-center mb-2">
+                 <img src={iconoAsesoria.src} alt="Ícono llave en mano" class="w-[60px] h-[60px]" loading="lazy" />
+          </div>
+            <h3 class="text-[20px] font-bold text-black mb-2">Asesoría técnica</h3>
+            <p class="text-black-700 text-[15px] leading-[1.2]">
+              Ingenieros especializados disenan la solucion ideal para su operacion
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="seccion-productos bg-[#f4f4f4] pb-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-8">
+        <h2 class="text-[#1b1e4b] text-3xl md:text-5xl font-bold mb-2">Nuestro catálogo de equipos</h2>
+        <p class="text-gray-700">
+          Filtre por marca para encontrar el equipo ideal. Cada equipo puede incluir foto y precio.
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <select id="filtro-categoria" class="h-11 bg-white border border-gray-300 px-4 rounded-[6px] text-gray-800 min-w-[180px]">
+            <option value="">Categoria</option>
+            {categorias.map((categoria) => (
+              <option value={categoria}>{categoria}</option>
+            ))}
+          </select>
+
+          <select id="filtro-marca" class="h-11 bg-white border border-gray-300 px-4 rounded-[6px] text-gray-800 min-w-[140px]">
+            <option value="">Marca</option>
+            {marcas.map((marca) => (
+              <option value={marca}>{marca}</option>
+            ))}
+          </select>
+
+          <select id="filtro-anio" class="h-11 bg-white border border-gray-300 px-4 rounded-[6px] text-gray-800 min-w-[120px]">
+            <option value="">Año</option>
+            {anios.map((anio) => (
+              <option value={anio}>{anio}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <div class="text-sm text-[#2a5f92] font-semibold">Filtrado por:</div>
+          <div id="chips-filtros" class="flex flex-wrap gap-2 text-xs"></div>
+          <select id="orden-productos" class="h-11 bg-[#e7e7e7] border border-gray-300 px-4 rounded-[6px] text-gray-800 min-w-[160px]">
+            <option value="default">Ordenar por</option>
+            <option value="nombre-asc">Nombre A-Z</option>
+            <option value="nombre-desc">Nombre Z-A</option>
+            <option value="anio-desc">Año (más nuevo)</option>
+            <option value="anio-asc">Año (más antiguo)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="relative">
+        <button
+          id="productos-prev"
+          type="button"
+          class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-white border border-gray-300 shadow text-gray-700 hover:bg-gray-100"
+          aria-label="Producto anterior"
+        >
+          ←
+        </button>
+
+        <div
+          id="productos-carrusel"
+          class="flex gap-6 overflow-x-auto pb-2 scroll-smooth"
+        >
+          {productosConImagen.map((producto) => (
+            <article
+              class="producto-card min-w-[255px] max-w-[255px] bg-white border border-gray-200 rounded-[10px] p-4 shadow-sm"
+              data-categoria={producto.data.category ?? ""}
+              data-marca={producto.data.brand ?? ""}
+              data-anio={producto.data.year ?? ""}
+              data-nombre={producto.data.title}
+            >
+              <div class="rounded-[8px] overflow-hidden bg-[#f3f3f3] h-[180px] mb-4 flex items-center justify-center">
+                {producto.image ? (
+                  <Image
+                    src={producto.image}
+                    alt={producto.data.title}
+                    class="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div class="text-sm text-gray-500">Sin imagen</div>
+                )}
+              </div>
+
+              <div class="text-[12px] uppercase tracking-wide text-gray-500 font-semibold">
+                {producto.data.brand ?? "Marca"}
+              </div>
+              <h3 class="text-[18px] font-bold text-[#111827] leading-[1.1] mt-1">{producto.data.title}</h3>
+              <p class="text-sm text-gray-600 mt-1">{producto.data.description}</p>
+
+              <div class="mt-4 flex items-center justify-between">
+                <span class="text-sm italic text-gray-500">
+                  {producto.data.price ?? "Precio a consultar"}
+                </span>
+                <a
+                  href={`https://wa.me/?text=${encodeURIComponent(producto.data.whatsappMessage ?? `Hola, quiero cotizar ${producto.data.title}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[#2a5f92] font-semibold inline-flex items-center gap-2"
+                >
+                  Cotizar
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <button
+          id="productos-next"
+          type="button"
+          class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 items-center justify-center rounded-full bg-white border border-gray-300 shadow text-gray-700 hover:bg-gray-100"
+          aria-label="Siguiente producto"
+        >
+          →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const filtroCategoria = document.getElementById("filtro-categoria");
+    const filtroMarca = document.getElementById("filtro-marca");
+    const filtroAnio = document.getElementById("filtro-anio");
+    const ordenProductos = document.getElementById("orden-productos");
+    const chipsFiltros = document.getElementById("chips-filtros");
+    const carrusel = document.getElementById("productos-carrusel");
+    const prevBtn = document.getElementById("productos-prev");
+    const nextBtn = document.getElementById("productos-next");
+
+    const getCards = () => Array.from(document.querySelectorAll(".producto-card"));
+
+    const renderChips = () => {
+      if (!chipsFiltros) return;
+      const chips = [];
+      if (filtroCategoria?.value) chips.push(filtroCategoria.value);
+      if (filtroMarca?.value) chips.push(filtroMarca.value);
+      if (filtroAnio?.value) chips.push(filtroAnio.value);
+
+      chipsFiltros.innerHTML = chips
+        .map(
+          (chip) =>
+            `<span class="bg-[#e9ecef] text-gray-700 px-2 py-1 rounded">` +
+            chip +
+            ` ×</span>`,
+        )
+        .join("");
+    };
+
+    const applyFilters = () => {
+      const categoria = filtroCategoria?.value ?? "";
+      const marca = filtroMarca?.value ?? "";
+      const anio = filtroAnio?.value ?? "";
+
+      getCards().forEach((card) => {
+        const okCategoria = !categoria || card.dataset.categoria === categoria;
+        const okMarca = !marca || card.dataset.marca === marca;
+        const okAnio = !anio || card.dataset.anio === anio;
+        card.style.display = okCategoria && okMarca && okAnio ? "block" : "none";
+      });
+
+      renderChips();
+    };
+
+    const applySort = () => {
+      if (!carrusel || !ordenProductos) return;
+      const cards = getCards();
+      const mode = ordenProductos.value;
+
+      cards.sort((a, b) => {
+        const nameA = (a.dataset.nombre || "").toLowerCase();
+        const nameB = (b.dataset.nombre || "").toLowerCase();
+        const yearA = Number(a.dataset.anio || 0);
+        const yearB = Number(b.dataset.anio || 0);
+
+        if (mode === "nombre-asc") return nameA.localeCompare(nameB);
+        if (mode === "nombre-desc") return nameB.localeCompare(nameA);
+        if (mode === "anio-desc") return yearB - yearA;
+        if (mode === "anio-asc") return yearA - yearB;
+        return 0;
+      });
+
+      cards.forEach((card) => carrusel.appendChild(card));
+    };
+
+    [filtroCategoria, filtroMarca, filtroAnio].forEach((el) => {
+      el?.addEventListener("change", applyFilters);
+    });
+    ordenProductos?.addEventListener("change", applySort);
+
+    prevBtn?.addEventListener("click", () => {
+      carrusel?.scrollBy({ left: -300, behavior: "smooth" });
+    });
+    nextBtn?.addEventListener("click", () => {
+      carrusel?.scrollBy({ left: 300, behavior: "smooth" });
+    });
+  </script>
+</Layout>

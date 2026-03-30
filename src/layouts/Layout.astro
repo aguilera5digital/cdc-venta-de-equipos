@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import SocialBar from "../components/BarraSocial.astro";
 import croppedImage from "../assets/images/cropped.png";
+import logoCdc from "@/assets/Logo-cdc.png";
 import { Font } from "astro:assets";
 
 export interface Props {
@@ -34,9 +35,9 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/images/logo.png" />
-    <link rel="shortcut icon" href="/images/logo.png" />
-    <link rel="apple-touch-icon" href="/images/logo.png" />
+    <link rel="icon" type="image/png" href={logoCdc.src} />
+    <link rel="shortcut icon" href={logoCdc.src} />
+    <link rel="apple-touch-icon" href={logoCdc.src} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     
@@ -112,7 +113,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
       }
     </script>
   </head>
-  <body class="min-h-screen flex flex-col mt-28">
+  <body class="min-h-screen flex flex-col mt-22">
     <div class="flex flex-col min-h-screen">
       <Header />
       <main class="flex-1">

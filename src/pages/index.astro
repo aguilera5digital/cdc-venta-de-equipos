@@ -2,43 +2,482 @@
 import Layout from "../layouts/Layout.astro";
 import Carousel from "@/components/ui/display/Carousel.astro";
 import AnimatedTitle from "@/components/AnimatedTitle.astro";
+import { Image } from "astro:assets";
 import slider2 from "../assets/images/SLIDER-2.webp";
 import slider1 from "../assets/images/slider-1.png";
+import bannerEquipos from "@/assets/images/images-equipos/banner-equipos.jpg";
+import iconoCheckCircle from "@/assets/svg/icono-check-circle.svg";
+import icono60LlaveEnMano from "@/assets/svg/icono-60-llave-en-mano.svg";
+import icono61PuestaEnMarcha from "@/assets/svg/icono-61-puesta-en-marcha.svg";
+import icono62MantencionPreventiva from "@/assets/svg/icono-62-mantencion-preventiva.svg";
+import icono63Autoservicios from "@/assets/svg/icono-63-autoservicios.svg";
+import imagenArriendo from "@/assets/images/images-home/imagen-arriendo.jpg";
+import icono58Lavadora from "@/assets/svg/Icono-58-lavadora.svg";
+import iconoCheckSimple from "@/assets/svg/Icono-check-simple.svg";
+import iconoHotel from "@/assets/svg/Icono-56-hoteles.svg";
+import iconoHospital from "@/assets/svg/Icono-57-hospitales.svg";
+import iconoLavadoraComercial from "@/assets/svg/Icono-58-lavadora.svg";
+import iconoUniforme from "@/assets/svg/Icono-53-uniforme.svg";
+import iconoEdificio from "@/assets/svg/Icono-54-edificios.svg";
+import iconoGastronomia from "@/assets/svg/Icono-55-gastronomia.svg";
+import marca37 from "@/assets/images/images-home/marca-37.png";
+import marca38 from "@/assets/images/images-home/marca-38.png";
+import marca39 from "@/assets/images/images-home/marca-39.png";
+import marca40 from "@/assets/images/images-home/marca-40.png";
+import marca41 from "@/assets/images/images-home/marca-41.png";
+import marca42 from "@/assets/images/images-home/marca-42.png";
+import marca43 from "@/assets/images/images-home/marca-43.png";
+import marca44 from "@/assets/images/images-home/marca-44.png";
+
+const marcasCarousel = [
+    { logo: marca37, nombre: "UniMac", descripcion: "Lavadoras, secadoras y rodillos industrial" },
+    { logo: marca38, nombre: "CDC by Kingstar", descripcion: "Lavadoras, secadoras, túneles" },
+    { logo: marca39, nombre: "Speed Queen", descripcion: "Lavadoras y secadoras comerciales" },
+    { logo: marca40, nombre: "Lapauw", descripcion: "Calandras" },
+    { logo: marca41, nombre: "UNICA", descripcion: "Lavadoras heavy duty" },
+    { logo: marca42, nombre: "PONY", descripcion: "Mesa de Planchado / Prensas" },
+    { logo: marca43, nombre: "UNIPRESS", descripcion: "Mesas de Planchado / Prensas" },
+    { logo: marca44, nombre: "FULTON", descripcion: "Calderas" },
+];
 ---
 
 <Layout>
-    <Carousel
-        images={[
-            {
-                src: slider2.src,
-                alt: "Banner",
-            },
-            {
-                src: slider1.src,
-                alt: "Banner",
-            },
-        ]}
-        size="3xl"
-        aspectRatio="16/9"
-        autoPlayInterval={4000}
-    />
+    <section class="header-home relative bg-[#fff] py-[40px]">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 rounded-[15px] overflow-hidden ">
+                <div class="p-6 md:p-10">
+                    <h1 class="text-[#1b1e4b] text-4xl md:text-4xl font-bold leading-tight">
+                        Equipamiento y arriendo
+                        <br />
+                        para <span class="text-[#1f6fbe]">Lavanderias</span>
+                    </h1>
+                    <p class="text-[#1b1e4b] text-2xl md:text-2xl font-semibold mt-2">
+                        Industriales y Comerciales
+                    </p>
 
-    <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-8">
-            <div class="col-span-1 p-19">
-                <AnimatedTitle 
-                text="¿Quiénes somos?" 
-                class="text-[34px] font-bold" />
-                <p class="text-gray-600 prose leading-[1.2] -tracking-[0.25px] mt-6">
-                    Siriza Agaria es una editorial independiente chilena, creada con la idea de dar a conocer historias diferentes, originales, creativas, por parte de autores chilenos e hispanoamericanos.
-                </p>
-            </div>
-            <div class="col-span-1 p-19">
-                <AnimatedTitle
-                text="¿Cuál es nuestra filosofía?"
-                class="text-[34px] font-bold" />
-                <p class="text-gray-600 prose leading-[1.2] -tracking-[0.25px] mt-6">«El papel aguanta todo». Creemos que el disfrute de leer y la calidad de un texto, no son excluyentes. Buscamos una literatura accesible, moderna y de calidad, promoviendo un tipo de escritura distinta a las que estamos acostumbrados.</p>
+                    <div class="mt-6 space-y-2">
+                        <div class="flex items-center gap-3 bg-[#f2f4f9] px-4 py-2 rounded-sm">
+                            <svg class="w-5 h-5 text-[#1f6fbe] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l4 4L19 6"></path>
+                            </svg>
+                            <p class="text-[#1f2937] text-sm md:text-base">Compra o arrienda sin grandes inversiones</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#f2f4f9] px-4 py-2 rounded-sm">
+                            <svg class="w-5 h-5 text-[#1f6fbe] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l4 4L19 6"></path>
+                            </svg>
+                            <p class="text-[#1f2937] text-sm md:text-base">Más de 300 proyectos implementados</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#f2f4f9] px-4 py-2 rounded-sm">
+                            <svg class="w-5 h-5 text-[#1f6fbe] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l4 4L19 6"></path>
+                            </svg>
+                            <p class="text-[#1f2937] text-sm md:text-base">Ingeniería y dimensionamiento a medida</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#f2f4f9] px-4 py-2 rounded-sm">
+                            <svg class="w-5 h-5 text-[#1f6fbe] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l4 4L19 6"></path>
+                            </svg>
+                            <p class="text-[#1f2937] text-sm md:text-base">Proyectos llave en mano</p>
+                        </div>
+                        <div class="flex items-center gap-3 bg-[#f2f4f9] px-4 py-2 rounded-sm">
+                            <svg class="w-5 h-5 text-[#1f6fbe] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12l4 4L19 6"></path>
+                            </svg>
+                            <p class="text-[#1f2937] text-sm md:text-base">Soporte técnico y repuestos garantizados</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-7 flex items-center gap-4">
+                        <a
+                            href="#"
+                            class="text-[12px] md:text-[16px] inline-flex items-center gap-2 bg-[#1f6fbe] hover:bg-[#155896] text-white font-semibold px-5 py-2.5 rounded-[10px] transition-all duration-300"
+                        >
+                            <span>✆</span>
+                            <span>Cotizar</span>
+                        </a>
+                        <a
+                            href="/equipos"
+                            class="text-[12px] md:text-[16px] inline-flex items-center justify-center border border-gray-300 text-[#1f2937] font-medium px-5 py-2.5 rounded-[10px] hover:bg-gray-50 transition-all duration-300"
+                        >
+                            Ver equipos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative min-h-[320px] md:min-h-[420px]">
+                    <Image
+                        src={bannerEquipos}
+                        alt="Lavandería industrial"
+                        class="absolute inset-0 w-full h-full object-cover object-center"
+                    />
+                </div>
             </div>
         </div>
+
+        <div class="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-200 shadow-md rounded-[28px] px-6 py-3 text-center z-10">
+            <p class="text-[#1f6fbe] text-2xl md:text-5xl font-bold leading-none">+300</p>
+            <p class="text-[#1b1e4b] text-xs md:text-sm font-semibold mt-1">Proyectos realizados</p>
+        </div>
+    </section>
+
+    <section class="home-resumen-metricas bg-white py-6">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <p class="text-[#0f172a] text-2xl md:text-5xl font-bold leading-none">+35</p>
+                    <p class=" mt-2 text-[#1b1e4b] text-base md:text-[18px] font-semibold">Años de experiencia</p>
+                </div>
+
+                <div>
+                    <p class="text-[#1f6fbe] text-2xl md:text-5xl font-bold leading-none">Nacional</p>
+                    <p class="mt-2 text-[#1b1e4b] text-base md:text-[18px] font-semibold">Cobertura en todo Chile</p>
+                </div>
+
+                <div>
+                    <p class="text-[#0f172a] text-2xl md:text-5xl font-bold leading-none">100%</p>
+                    <p class="mt-2 text-[#1b1e4b] text-base md:text-[18px] font-semibold">Servicio técnico especializado</p>
+                </div>
+
+                <div>
+                    <p class="text-[#0f172a] text-2xl md:text-5xl font-bold leading-none">Soporte</p>
+                    <p class="mt-2 text-[#1b1e4b] text-base md:text-[18px] font-semibold">Garantizado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <section class="home-carrusel-marcas bg-[#fff] py-6 md:py-8">
+    <div class="max-w-5xl mx-auto px-2 md:px-4">
+        <div class="overflow-hidden" id="homeMarcasViewport">
+            <div class="flex gap-2 md:gap-3 will-change-transform transition-transform duration-500 ease-out" id="homeMarcasTrack">
+                
+                {marcasCarousel.map((marca) => (
+                    <article class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 shrink-0 text-center">
+                        
+                        <div class="h-20 sm:h-16 md:h-20 flex items-center justify-center mb-2">
+                            <img 
+                                src={marca.logo.src} 
+                                alt={marca.nombre} 
+                                class="h-full w-auto object-contain" 
+                                loading="lazy" 
+                            />
+                        </div>
+
+                        <p class="text-sm md:text-base font-bold text-[#111827] leading-tight">
+                            {marca.nombre}
+                        </p>
+
+                        <p class="mt-1 text-[11px] md:text-sm text-[#4b5563] leading-tight min-h-[28px] md:min-h-[40px]">
+                            {marca.descripcion}
+                        </p>
+
+                    </article>
+                ))}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="home-soluciones-rubro bg-[#fff] py-14">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-[#1b1e4b] text-3xl md:text-[40px] font-bold leading-tight">Soluciones por rubro</h2>
+                <p class="mt-3 text-[#4b5563] text-sm md:text-base">Diseñamos propuestas técnicas adaptadas a las necesidades de cada industria.</p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm p-6">
+                <div class="flex justify-start mb-2">
+                   <img src={iconoHotel.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                </div>
+                    <h3 class="text-[#111827] text-[16px] font-bold leading-tight">Hoteles</h3>
+                    <p class="mt-3 text-[#4b5563] text-sm leading-[1.35]">Equipos de alta capacidad y eficiencia para operaciones hoteleras con demanda continua de lavado.</p>
+                    <a href="#" class="text-[15px] mt-5 inline-flex items-center gap-2 text-[#000] font-[500] transition-colors duration-300 hover:text-[#1f6fbe]">Explorar <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm p-6">
+                <div class="flex justify-start mb-2">
+                   <img src={iconoHospital.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                </div>
+                    <h3 class="text-[#111827] text-[16px] font-bold leading-tight">Clínicas y Hospitales</h3>
+                    <div class="w-full h-[60px]">
+                    <p class="mt-3 text-[#4b5563] text-sm leading-[1.35]">Soluciones que cumplen normativas sanitarias estrictas para el sector salud.</p>
+                    </div>
+                    <a href="#" class="text-[15px] mt-5 inline-flex items-center gap-2 text-[#000] font-[500] transition-colors duration-300 hover:text-[#1f6fbe]">Explorar <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm p-6">
+                <div class="flex justify-start mb-2">
+                 <img src={iconoLavadoraComercial.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                </div>
+                    <h3 class="text-[#111827] text-[16px] font-bold leading-tight">Lavanderías Comerciales</h3>
+                    <div class="w-full h-[60px]">
+                    <p class="mt-3 text-[#4b5563] text-sm leading-[1.35]">Maquinaria robusta para lavanderías de alto volumen con máxima productividad.</p>
+                    </div>
+                    <a href="#" class="text-[15px] mt-5 inline-flex items-center gap-2 text-[#000] font-[500] transition-colors duration-300 hover:text-[#1f6fbe]">Explorar <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm p-6">
+                <div class="flex justify-start mb-2">
+                <img src={iconoUniforme.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                </div>
+                    <h3 class="text-[#111827] text-[16px] font-bold leading-tight">Industria y Uniformes</h3>
+                    <div class="w-full h-[60px]">
+                    <p class="mt-3 text-[#4b5563] text-sm leading-[1.35]">Equipos diseñados para el lavado industrial de uniformes y ropa de trabajo.</p>
+                    </div>
+                    <a href="#" class="text-[15px] mt-5 inline-flex items-center gap-2 text-[#000] font-[500] transition-colors duration-300 hover:text-[#1f6fbe]">Explorar <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm p-6">
+                <div class="flex justify-start mb-2">
+                <img src={iconoEdificio.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                </div>
+                    <h3 class="text-[#111827] text-[16px] font-bold leading-tight">Comunidades de Edificios y Multifamily</h3>
+                    <div class="w-full h-[60px]">
+                    <p class="mt-3 text-[#4b5563] text-sm leading-[1.35]">Soluciones compactas y eficientes para edificios residenciales y condominios.</p>
+                    </div>
+                    <a href="#" class="text-[15px] mt-5 inline-flex items-center gap-2 text-[#000] font-[500] transition-colors duration-300 hover:text-[#1f6fbe]">Explorar <span aria-hidden="true">→</span></a>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm p-6">
+                <div class="flex justify-start mb-2">
+                <img src={iconoGastronomia.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                </div>
+                    <h3 class="text-[#111827] text-[16px] font-bold leading-tight">Gastronomía</h3>
+                    <div class="w-full h-[60px]">
+                    <p class="mt-3 text-[#4b5563] text-sm leading-[1.35]">Equipos especializados para el manejo de textiles en el rubro gastronómico.</p>
+                    </div>
+                    <a href="#" class="text-[15px] mt-5 inline-flex items-center gap-2 text-[#000] font-[500] transition-colors duration-300 hover:text-[#1f6fbe]">Explorar <span aria-hidden="true">→</span></a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-servicios-continuidad bg-[#fff] pb-16 pt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center">
+                <h2 class="text-[#1b1e4b] text-3xl md:text-[40px] font-medium leading-tight">
+                    Servicios que aseguran <span class="font-bold">continuidad operacional</span>
+                </h2>
+                <p class="font-[500] mt-2 text-black text-m md:text-[18px]">
+                    Acompañamos a nuestros clientes en cada etapa, desde la instalación hasta la operación continua.
+                </p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm overflow-hidden">
+                    <div class="px-6 pt-5 pb-3 flex justify-center">
+                        <img src={icono60LlaveEnMano.src} alt="Ícono llave en mano" class="w-12 h-12" loading="lazy" />
+                    </div>
+                    <div class="bg-[#102a52] px-6 py-3 w-full h-[70px] mx-auto flex items-center">
+                        <h3 class="text-white text-[18px] font-bold leading-tight">Proyectos llave en mano</h3>
+                    </div>
+                    <div class="px-6 py-5 space-y-3 h-[210px]">
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]"><span class="font-semibold">Diseño integral</span> del proyecto de lavandería</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Suministro e <span class="font-semibold">instalación</span> de equipos</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Capacitación incluida</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Acompañamiento post-venta continuo</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-5 flex justify-center">
+                        <a href="#" class="inline-flex items-center justify-center rounded-[8px] border border-[#d1d5db] bg-white px-4 py-2 text-sm text-[#374151] transition-colors duration-300 hover:bg-[#1f6fbe] hover:text-white hover:border-[#1f6fbe]">Cotiza tu proyecto</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm overflow-hidden">
+                    <div class="px-6 pt-5 pb-3 flex justify-center">
+                        <img src={icono61PuestaEnMarcha.src} alt="Ícono instalación y puesta en marcha" class="w-12 h-12" loading="lazy" />
+                    </div>
+                    <div class="bg-[#102a52] px-6 py-3">
+                        <h3 class="text-white text-[18px] font-bold leading-tight ">Instalación y puesta en marcha</h3>
+                    </div>
+                    <div class="px-6 py-5 space-y-3 h-[210px]">
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Montaje profesional de equipos</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Conexiones eléctricas, hidráulicas y de gas</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Capacitación al personal operativo</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Pruebas de funcionamiento certificadas</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-5 flex justify-center">
+                        <a href="#" class="inline-flex items-center justify-center rounded-[8px] border border-[#d1d5db] bg-white px-4 py-2 text-sm text-[#374151] transition-colors duration-300 hover:bg-[#1f6fbe] hover:text-white hover:border-[#1f6fbe]">Empieza hoy</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm overflow-hidden">
+                    <div class="px-6 pt-5 pb-3 flex justify-center">
+                        <img src={icono62MantencionPreventiva.src} alt="Ícono mantención preventiva" class="w-12 h-12" loading="lazy" />
+                    </div>
+                    <div class="bg-[#102a52] px-6 py-3">
+                        <h3 class="text-white text-[18px] font-bold leading-tight">Mantención preventiva y correctiva</h3>
+                    </div>
+                    <div class="px-6 py-5 space-y-3 h-[210px]">
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Planes de mantención programada</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Diagnóstico técnico especializado</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Repuestos originales garantizados</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Respuesta rápida ante fallas críticas</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-5 flex justify-center">
+                        <a href="#" class="inline-flex items-center justify-center rounded-[8px] border border-[#d1d5db] bg-white px-4 py-2 text-sm text-[#374151] transition-colors duration-300 hover:bg-[#1f6fbe] hover:text-white hover:border-[#1f6fbe]">Elige tu plan</a>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-[14px] border border-[#e5e7eb] shadow-sm overflow-hidden">
+                    <div class="px-6 pt-5 pb-3 flex justify-center">
+                        <img src={icono63Autoservicios.src} alt="Ícono autoservicios" class="w-12 h-12" loading="lazy" />
+                    </div>
+                    <div class="bg-[#102a52] px-6 py-3">
+                        <h3 class="text-white text-[16px] font-bold leading-tight">Lavanderías autoservicios para edificios y comunidades</h3>
+                    </div>
+                    <div class="px-6 py-5 space-y-3 h-[210px]">
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Equipamiento completo para amenities de lavandería</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Soluciones para edificios residenciales y condominios</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Sistemas de pago y control de acceso</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <img src={iconoCheckCircle.src} alt="" class="w-4 h-4 mt-[2px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="text-[#374151] text-sm leading-[1.2]">Operación simple y bajo mantenimiento</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-5 flex justify-center">
+                        <a href="#" class="inline-flex items-center justify-center rounded-[8px] border border-[#d1d5db] bg-white px-4 py-2 text-sm text-[#374151] transition-colors duration-300 hover:bg-[#1f6fbe] hover:text-white hover:border-[#1f6fbe]">Comenzar ahora</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-arriendo-industrial bg-[#fff] pb-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 rounded-[14px] overflow-hidden border border-[#e5e7eb] shadow-sm bg-white">
+                <div class="p-7 md:p-10">
+                    <div class="inline-flex items-center gap-2 rounded-full bg-[#eaf3ff] px-3 py-1">
+                        <img src={icono58Lavadora.src} alt="" class="w-4 h-4" loading="lazy" aria-hidden="true" />
+                        <span class="text-[#1f6fbe] text-sm font-bold">CDC RENT</span>
+                    </div>
+
+                    <h2 class="mt-5 text-[#1b1e4b] text-4xl md:text-[40px] font-bold leading-[1.05]">
+                        Arriendo de
+                        <br />
+                        equipamiento industrial
+                    </h2>
+
+                    <p class="font-[500] mt-5 text-black text-base leading-[1.35] max-w-[560px]">
+                        Accede a equipos de lavandería industrial de última generación sin inversión inicial. Contratos flexibles con mantención incluida y renovación tecnológica continua.
+                    </p>
+
+                    <div class="mt-6 space-y-3">
+                        <div class="flex items-start gap-3">
+                            <img src={iconoCheckSimple.src} alt="" class="w-4 h-4 mt-[3px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="font-[500] text-[#374151] text-base leading-[1.3]"><span class="font-bold text-[#111827]">Sin inversión inicial</span> - cuotas fijas mensuales</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <img src={iconoCheckSimple.src} alt="" class="w-4 h-4 mt-[3px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="font-[500] text-[#374151] text-base leading-[1.3]">Mantención preventiva y correctiva incluida</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <img src={iconoCheckSimple.src} alt="" class="w-4 h-4 mt-[3px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="font-[500] text-[#374151] text-base leading-[1.3]">Renovación y upgrade de equipos</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <img src={iconoCheckSimple.src} alt="" class="w-4 h-4 mt-[3px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="font-[500] text-[#374151] text-base leading-[1.3]">Contratos desde <span class="font-bold text-[#111827]">12 a 60</span> equipos</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <img src={iconoCheckSimple.src} alt="" class="w-4 h-4 mt-[3px] shrink-0" loading="lazy" aria-hidden="true" />
+                            <p class="font-[500] text-[#374151] text-base leading-[1.3]">Seguros contratados dentro del plan su operación</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap items-center gap-3">
+                        <a href="#" class="inline-flex items-center justify-center rounded-[8px] bg-[#1f6fbe] px-5 py-2.5 text-white text-sm font-semibold hover:bg-[#155896] transition-colors duration-300">
+                            Simular arriendo
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center rounded-[8px] border border-[#d1d5db] bg-white px-5 py-2.5 text-[#374151] text-sm font-medium hover:bg-[#1f6fbe] hover:text-white hover:border-[#1f6fbe] transition-colors duration-300">
+                            Solicitar asesoría
+                        </a>
+                    </div>
+                </div>
+
+                <div class="relative min-h-[340px] md:min-h-[560px]">
+                    <img src={imagenArriendo.src} alt="Arriendo de equipamiento industrial" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const marcasTrack = document.getElementById("homeMarcasTrack");
+        if (marcasTrack && !marcasTrack.dataset.initialized) {
+            marcasTrack.dataset.initialized = "true";
+            const visibles = 4;
+            const originales = Array.from(marcasTrack.children);
+            const clones = originales.slice(0, visibles).map((item) => item.cloneNode(true));
+            clones.forEach((clone) => marcasTrack.appendChild(clone));
+
+            let indice = 0;
+            const totalOriginales = originales.length;
+
+            const mover = () => {
+                indice += 1;
+                marcasTrack.style.transform = `translateX(-${(indice * 100) / visibles}%)`;
+
+                if (indice === totalOriginales) {
+                    window.setTimeout(() => {
+                        marcasTrack.style.transition = "none";
+                        indice = 0;
+                        marcasTrack.style.transform = "translateX(0)";
+                        void marcasTrack.offsetHeight;
+                        marcasTrack.style.transition = "transform 500ms ease-out";
+                    }, 520);
+                }
+            };
+
+            window.setInterval(mover, 2500);
+        }
+    </script>
 
 </Layout>

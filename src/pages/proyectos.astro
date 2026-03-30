@@ -1,0 +1,185 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import bannerEquipos from "@/assets/images/images-equipos/banner-equipos.jpg";
+
+const tarjetasSlider = [
+  {
+    titulo: "Título del Proyecto",
+    empresa: "Nombre de la Empresa Cliente",
+    descripcion:
+      "Aquí va una descripción del proyecto con Lorem ipsum dolor sit amet, consec- tetuer adipiscing elit, sed diam nonum.",
+    image: bannerEquipos,
+  },
+  {
+    titulo: "Proyecto Lavandería Industrial",
+    empresa: "Industrias del Norte S.A.",
+    descripcion:
+      "Implementación de línea completa con equipos de alta eficiencia, soporte técnico y puesta en marcha.",
+    image: bannerEquipos,
+  },
+  {
+    titulo: "Planta hotelera y operación continua",
+    empresa: "Hotel Ejemplo SPA",
+    descripcion:
+      "Solución llave en mano para alta demanda con mantención programada y respaldo postventa.",
+    image: bannerEquipos,
+  },
+  {
+    titulo: "Expansión de capacidad",
+    empresa: "Grupo Operador Sur",
+    descripcion:
+      "Ampliación de capacidad con equipamiento de lavandería industrial y capacitación del personal.",
+    image: bannerEquipos,
+  },
+];
+---
+
+<Layout
+  title="Proyectos - Medical Más Salud"
+  description="Conoce proyectos de lavandería industrial diseñados e instalados por CDC."
+>
+  <section class="proyectos-hero bg-white pt-20 pb-16 md:pt-16 md:pb-16">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-[#1b1e4b] text-4xl md:text-5xl font-bold mb-4">
+        Proyectos CDC
+      </h1>
+      <p class="text-gray-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+        Conoce algunos de los proyectos de lavandería industrial que hemos diseñado,
+        instalado y puesto en marcha
+      </p>
+    </div>
+  </section>
+
+  <section class="proyectos-slider-lavadoras bg-white pb-20">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex items-center justify-between mb-6">
+       
+      </div>
+
+      <div class="relative">
+        <div
+          id="lavadoras-slider-track"
+          class="w-full overflow-x-auto scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          aria-label="Slider de proyectos"
+        >
+          <div class="flex">
+            {tarjetasSlider.map((tarjeta, index) => (
+              <article
+                class="proyectos-slider-slide relative shrink-0 w-full snap-center aspect-[16/10] rounded-[18px] overflow-hidden bg-gray-200 shadow-lg"
+                data-slide-index={index}
+                aria-label={`Tarjeta ${index + 1}`}
+              >
+                <Image
+                  src={tarjeta.image}
+                  alt={tarjeta.titulo}
+                  class="absolute inset-0 w-full h-full object-cover object-center"
+                />
+
+                <div class="absolute inset-x-0 bottom-0 bg-[#0b2e4f]/70 backdrop-blur-[2px] px-6 py-5">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
+                    <div class="text-white">
+                      <p class="text-sm md:text-base font-normal opacity-95">
+                        {tarjeta.titulo}
+                      </p>
+                      <p class="text-[18px] md:text-2xl font-bold leading-[1.1] mt-1">
+                        {tarjeta.empresa}
+                      </p>
+                    </div>
+
+                    <div class="text-white/95 text-xs md:text-sm leading-relaxed">
+                      <p>{tarjeta.descripcion}</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-8 mt-6">
+          <button
+            type="button"
+            id="lavadoras-slider-prev"
+            class="text-gray-800 hover:text-blue-600 text-2xl font-light transition-colors"
+            aria-label="Anterior"
+          >
+            ←
+          </button>
+
+          <p
+            id="lavadoras-slider-pagination"
+            class="text-gray-800 text-sm md:text-base font-medium tabular-nums min-w-[6.5rem] text-center"
+          >
+            01 / {String(tarjetasSlider.length).padStart(2, "0")}
+          </p>
+
+          <button
+            type="button"
+            id="lavadoras-slider-next"
+            class="text-gray-800 hover:text-blue-600 text-2xl font-light transition-colors"
+            aria-label="Siguiente"
+          >
+            →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script define:vars={{ totalSlides: tarjetasSlider.length }}>
+    const track = document.getElementById("lavadoras-slider-track");
+    const slides = track?.querySelectorAll(".proyectos-slider-slide");
+    const prevBtn = document.getElementById("lavadoras-slider-prev");
+    const nextBtn = document.getElementById("lavadoras-slider-next");
+    const pagination = document.getElementById("lavadoras-slider-pagination");
+
+    if (track && slides?.length && pagination) {
+      let activeIndex = 0;
+
+      const updateLabel = () => {
+        pagination.textContent = `${String(activeIndex + 1).padStart(
+          2,
+          "0",
+        )} / ${String(totalSlides).padStart(2, "0")}`;
+      };
+
+      const goTo = (index) => {
+        const n = slides.length;
+        activeIndex = ((index % n) + n) % n;
+        slides[activeIndex]?.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest",
+        });
+        updateLabel();
+      };
+
+      prevBtn?.addEventListener("click", () => goTo(activeIndex - 1));
+      nextBtn?.addEventListener("click", () => goTo(activeIndex + 1));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+              const idx = Number(
+                entry.target.getAttribute("data-slide-index") ?? "0",
+              );
+              if (!Number.isNaN(idx)) {
+                activeIndex = idx;
+                updateLabel();
+              }
+            }
+          }
+        },
+        { root: track, threshold: [0.55, 0.7] },
+      );
+
+      slides.forEach((slide) => observer.observe(slide));
+
+      requestAnimationFrame(() => {
+        goTo(0);
+      });
+    }
+  </script>
+</Layout>
